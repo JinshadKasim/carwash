@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Status</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/status.css' %}">
+</head>
+<body>
+    <div class="rspnsv">
+    <div class="cusd">
+    <img src="{% static 'images/customer1.jpg' %}" alt="" class="cus1">
+    </div>
+    <div class="cusd2">
+        <h1 class="cstmr">Hello Mr.Customer</h1>
+    <span class="status">Your Service status</span>
+    </div>
+    <br>
+
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Car NO.</th>
+            <th scope="col">Carname</th>
+            <th scope="col">Date&Time</th>
+            <th scope="col">Booking Status</th>
+            <th scope="col">Service Status</th>
+            <th scope="col">Additional Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Altis</td>
+            <td>4/8/22 12pm</td>
+            <td>Booked</td>
+            <td>Pending</td>
+            <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Altis</td>
+            <td>4/8/22 3pm</td>
+            <td>Booked</td>
+            <td>Completed</td>
+            <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Altis</td>
+            <td>6/8/22 11:30am</td>
+            <td>Booked</td>
+            <td>servicing</td>
+            <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>Altis</td>
+            <td>6/8/22 1pm</td>
+            <td>Booked</td>
+            <td>Pending</td>
+            <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>Altis</td>
+            <td>6/8/22 4pm</td>
+            <td>Booked</td>
+            <td>Pending</td>
+            <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="bbbt"><a href="{% url 'booking' %}">
+        <button type="button" class="btn btn-primary">Book Another Car</button></a>
+        <br><br>
+        <button type="button" class="btn btn-primary" onclick="history.back()">Back to Home</button>
+      </div>
+      </div>
+
+      
+    
+</body>
+</html>

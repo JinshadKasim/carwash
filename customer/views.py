@@ -18,3 +18,7 @@ def signedin(request):
 def booking(request):
     return render(request,'customer/booking.html')
     
+    
+def status(request):
+    return render(request,'customer/status.html')
+    
