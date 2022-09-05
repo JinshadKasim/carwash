@@ -64,6 +64,18 @@
         font-size: 10px;
     }
 
+    
+.cbk{
+    font-size: 8px;
+}
+
+.cb{
+    --bs-btn-padding-y: .1rem;
+    --bs-btn-padding-x: .0rem; 
+    --bs-btn-font-size: .40rem;
+}
+
+
 }
 
 
