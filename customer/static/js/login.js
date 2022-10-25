@@ -18,4 +18,4 @@ function signin(){
 	if(a==ins1 && b==ins2){
 		window.location.replace("/home")
 	}
-}
+}	
