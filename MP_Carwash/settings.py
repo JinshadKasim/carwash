@@ -78,16 +78,29 @@ WSGI_APPLICATION = 'MP_Carwash.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':'mpscarwash',
-        'USER': 'postgres',
-        'PASSWORD': '123',
-        'PORT': '2255',
-        'HOST': 'localhost'
+        'NAME':'d6kfb7lobakscf',
+        'USER': 'wcpjmntkwwmdqm',
+        'PASSWORD': '6dd7deba7effbd0f02286744802349862e43050105e11b9489ca0a71fe6fbedf',
+        'PORT': 'wcpjmntkwwmdqm',
+        'HOST': 'ec2-44-207-126-176.compute-1.amazonaws.com'
             }
 }
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'mpscarwash',
+#         'USER': 'postgres',
+#         'PASSWORD': '123',
+#         'PORT': '2255',
+#         'HOST': 'localhost'
+#             }
+# }
 
 
 

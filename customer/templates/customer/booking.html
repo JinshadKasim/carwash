@@ -9,8 +9,9 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
 	<title>Booking Form HTML Template</title>
-	<script src="{% static 'js/login.js' %}" charset="utf-8"></script>
+	<!-- <script src="{% static 'js/login.js' %}" charset="utf-8"></script> -->
 	<script src="{% static 'js/script.js' %}" charset="utf-8"></script>
+	<script src="{% static 'js/booking.js' %}" charset="utf-8"></script>
 		
 
 	<!-- Google font -->
@@ -41,8 +42,9 @@
 						<div class="form-header">
 							<h1>Book Your car</h1>
 						</div>
-						<form>
-							<div class="row">
+						<form method="post" onsubmit="return booking()">
+							{% csrf_token %}
+							<!-- <div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
 										<span class="form-label">Name</span>
@@ -55,10 +57,10 @@
 										<input class="form-control" type="email" placeholder="Enter your email">
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<div class="form-group">
 								<span class="form-label">Select Plan</span>
-								<select class="form-control" required>
+								<select class="form-control" required name="plan" id="plan">
 									<option disabled selected>Select a plan</option>
 									<option>Basic Service</option>
 									<option>Premium Service</option>
@@ -68,21 +70,21 @@
 							</div>
 							<div class="form-group">
 								<span class="form-label">Phone</span>
-								<input class="form-control" type="tel" placeholder="Enter your phone number">
+								<input class="form-control" type="tel" placeholder="Enter your phone number" name="phone" id="phone">
 							</div>
 							<div class="form-group">
 								<span class="form-label">Car Name</span>
-								<input class="form-control" type="text" placeholder="Car Model">
+								<input class="form-control" type="text" placeholder="Car Model" name="car_name" id="car_name">
 							</div>
 							<div class="form-group">
 								<span class="form-label">Destination</span>
-								<input class="form-control" type="text" placeholder="Enter ZIP/Location">
+								<input class="form-control" type="text" placeholder="Enter ZIP/Location" name="destination" id="destination">
 							</div>
 							<div class="row">
 								<div class="col-sm-5">
 									<div class="form-group">
 										<span class="form-label">Washing Date</span>
-										<input class="form-control" type="date" required>
+										<input class="form-control" type="date" required name="washing_date" id="washing_date">
 									</div>
 								</div>
 								<div class="col-sm-7">
@@ -90,7 +92,7 @@
 										<div class="col-sm-4">
 											<div class="form-group">
 												<span class="form-label">Hour</span>
-												<select class="form-control">
+												<select class="form-control" name="hour" id="hour">
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
@@ -110,7 +112,7 @@
 										<div class="col-sm-4">
 											<div class="form-group">
 												<span class="form-label">Min</span>
-												<select class="form-control">
+												<select class="form-control" name="minute" id="minute">
 													<option>05</option>
 													<option>10</option>
 													<option>15</option>
@@ -129,7 +131,7 @@
 										<div class="col-sm-4">
 											<div class="form-group">
 												<span class="form-label">AM/PM</span>
-												<select class="form-control">
+												<select class="form-control" name="ampm" id="ampm">
 													<option>AM</option>
 													<option>PM</option>
 												</select>
@@ -141,10 +143,10 @@
 							</div>
 							<div class="form-group">
 								<span class="form-label">Message(optional)</span>
-								<input class="form-control" type="text">
+								<input class="form-control" type="text" name="message" id="message">
 							</div>
 							<div class="form-btn">
-								<button class="submit-btn">Book Now</button>
+								<button class="submit-btn" type="submit">Book Now</button>
 							</div>
 							<br>
 							<div class="form-btn">

@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from customer.models import Users
+from customer.models import Users,Bookings
 from decorators import login_check,logout_check
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -44,7 +44,18 @@ def signedin(request):
     
 @login_check
 def booking(request):
-    return render(request,'customer/booking.html')
+        plan = request.POST['plan']
+        phone = request.POST['phone']
+        car_name = request.POST['car_name']
+        destination = request.POST['destination']
+        washing_date = request.POST['washing_date']
+        hour = request.POST['hour']
+        minute = request.POST['minute']
+        ampm = request.POST['ampm']
+        message = request.POST['message']
+        userObj = Bookings(name=name, email=email, phone=phone, password=password)
+        userObj.save()
+        return render(request,'customer/booking.html')
     
 @login_check
 def status(request):
