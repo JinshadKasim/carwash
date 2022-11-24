@@ -1,0 +1,72 @@
+{% extends 'admi/dashboard.html' %}
+{% block content %}
+<h2 class="bookingHeading">Service History</h3>
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Booking ID</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Date&Time</th>
+        <th scope="col">Booking Status</th>
+        <th scope="col">Service Status</th>
+        <th scope="col">Payment Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Altis</td>
+        <td>4/8/22 12pm</td>
+        <td>Booked</td>
+        <td>Completed</td>
+        <td>Compketed</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Altis</td>
+        <td>4/8/22 3pm</td>
+        <td>Booked</td>
+        <td>completed</td>
+        <td>Completed</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Altis</td>
+        <td>6/8/22 11:30am</td>
+        <td>Booked</td>
+        <td>Completed</td>
+        <td>Completed</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>Altis</td>
+        <td>6/8/22 1pm</td>
+        <td>Booked</td>
+        <td>Completed</td>
+        <td>Completed</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">5</th>
+        <td>Altis</td>
+        <td>6/8/22 4pm</td>
+        <td>Booked</td>
+        <td>Completed</td>
+        <td>Completed</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="bbbt">
+    <button type="button" class="btn btn-primary" onclick="history.back()">Back to Home</button>
+  </div>
+  </div>
+
+
+{% endblock %}

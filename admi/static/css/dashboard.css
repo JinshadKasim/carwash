@@ -1,6 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
 
 
+.empHeading{
+    margin-top: 5%;
+    margin-left: 35%;
+    text-decoration: underline;
+}
+
+.bookingHeading{
+    margin-left: 35%;
+    text-decoration: underline;
+}
+
 .adimg{
    border-radius: 25%;
    width: 130px;

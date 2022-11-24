@@ -8,6 +8,9 @@
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
 	<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css'>
+<script src="{% static 'js/login2.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -15,7 +18,8 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form method="post" onsubmit="return signUp()" action="register" >
+			{% csrf_token %}
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -23,15 +27,18 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="number" placeholder="Phone" />
-			<input type="password" placeholder="Password" />
-			<button>Sign Up</button>
+			<input type="text" placeholder="Name" name="name"  id="name"/>
+			<input type="email" placeholder="Email" name="email" id="email" onchange="checkEmailExist()"/><span id="emailError" style="color: red;"></span>
+
+			<input type="number" placeholder="Phone" name="phone" id="phone" />
+			<input type="password" placeholder="Password" name="password" id="password" />
+			<input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" />
+			<button type="submit" id="submit">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="#">
+		<form action="login" method="post">
+			{% csrf_token %}
 			<h1>Sign in</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -39,10 +46,11 @@
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email or Phone"  id="ins1"/>
-			<input type="password" placeholder="Password" id="ins2"/>
+			<input type="email" placeholder="Email or Phone"  id="ins1" name="email"/>
+			<input type="password" placeholder="Password" id="ins2" name="password"/><br>
+			<span style="color: red;">{{message}}</span>
 			<a href="#">Forgot your password?</a>
-			<button onclick="signin()" type="button">Sign In</button>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -61,7 +69,8 @@
 	</div>
 </div>
 <br><br>
-<center><button class="ghost" style="background-color: antiquewhite;" onclick="history.back()">Back to Home</button></center>
+<center>
+	<a href="{% url 'index' %}"><button class="ghost" style="background-color: antiquewhite;">Back to Home</button></a></center>
 
 <script src="{% static 'js/login.js' %}" charset="utf-8"></script>
 </body>

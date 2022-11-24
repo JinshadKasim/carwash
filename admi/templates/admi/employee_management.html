@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/manageEmployee.css' %}">
     <script src="{% static 'js/dashboard.js' %}"></script>
     <title>Document</title>
 </head>
@@ -28,12 +29,12 @@
                                 src="{% static 'images/admin2.png' %}" alt="" class="adimg"></i> <span
                             class="nav_logo-name"></span> </a>
                     <div class="nav_list"> <a href="{% url 'dashboard' %}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a> <a href="{% url 'employeeManagement' %}" class="nav_link"> <i
+                            <span class="nav_name">Dashboard</span> </a> <a href="#" class="nav_link"> <i
                                 class='bx bx-user nav_icon'></i> <span class="nav_name">Manage Employee</span> </a> <a href="#"
                             class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
                                 class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i
                                 class='bx bx-bookmark nav_icon'></i> <span class="nav_name"></span> </a> <a
-                            href="{% url 'serviceHistory' %}" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span
+                            href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span
                                 class="nav_name">Service History</span> </a> <a href="#" class="nav_link"> <i
                                 class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>
                     </div>
@@ -42,58 +43,78 @@
             </nav>
         </div>
         <!--Container Main start-->
-        <div class="height-100 bg-light">
-            <h4>MPS Car Washing Center</h4>
-            {% block content %}
+        
+       <h2 class="empHeading">Employee Management</h2>
+       
 
-          <a href="{% url 'tbooking' %}">  <div class="total-booking">
-                
-                <i class='bx bx-user nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Total Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
 
-            </div>
-            </a>
-            
-           <a href="{% url 'cbooking' %}"> <div class="total-booking">
-                
-                <i class='bx bx-user nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Completed Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Sr.No</th>
+        <th scope="col">Emp_ID</th>
+        <th scope="col">Emp_Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">DOB</th>
+        <th scope="col">shift</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>100</td>
+        <td>Abhinav TP</td>
+        <td>989656748</td>
+        <td>Kattangal</td>
+        <td>19/01/2002</td>
+        <td>7PM-1PM</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>101</td>
+        <td>Anwer</td>
+        <td>87688846</td>
+        <td>Koduvally</td>
+        <td>21/5/1999</td>
+        <td>7PM-1PM</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>103</td>
+        <td>Favas M</td>
+        <td>9098756430</td>
+        <td>Kunnamangalam</td>
+        <td>4/5/2000</td>
+        <td>1PM-6PM</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>104</td>
+        <td>Misbah PK</td>
+        <td>9870654628</td>
+        <td>Kattangal</td>
+        <td>17/9/1999</td>
+        <td>1PM-6PM</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
 
-            </div>
-            </a>
-            <a href="">
-            <div class="total-booking">
-                
-                <i class='bx bx-message-square-detail nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Unread Query Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
+  <div class="bbbt"><a href="{% url 'booking' %}">
+    <button type="button" class="btn btn-primary">Add Employee</button></a>
+    <br><br>
+   <a href="{% url 'dashboard' %}"> <button type="button" class="btn btn-primary">Back to Home</button></a>
+  </div>
+  </div>
 
-            </div>
-            </a>
-            <a href="">
-            <div class="total-booking">
-                
-                <i class='bx bx-message-square-detail nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Read Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
-            
-            </div>
-            </a>
 
-            {% endblock %}
-            
-        </div>
-        <!--Container Main end-->
+
 
 
     </body>
