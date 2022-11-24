@@ -1,0 +1,104 @@
+
+.cus1{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    border-radius: 50%;
+}
+
+.cusd{
+    display: flex;
+    justify-content: center;
+}
+
+.cusd2{
+    display: block;
+    text-align: center;
+}
+
+.cstmr{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    margin-top: 10px;
+}
+
+.status{
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.bbbt{
+    display: block;
+    text-align: center;
+}
+
+.rspnsv{
+    background-color: white;
+    width: 100%;
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.btnsz{
+    --bs-btn-padding-y: .20rem;
+    --bs-btn-padding-x: .1rem; 
+    --bs-btn-font-size: .70rem;
+}
+
+.cbk{
+    font-size: 10px;
+}
+
+.cb{
+    --bs-btn-padding-y: .20rem;
+    --bs-btn-padding-x: .2rem; 
+    --bs-btn-font-size: .65rem;
+}
+
+@media only screen and (max-width: 400px){
+    table{
+        font-size: 10px;
+    }
+
+    
+.cbk{
+    font-size: 8px;
+}
+
+.cb{
+    --bs-btn-padding-y: .1rem;
+    --bs-btn-padding-x: .0rem; 
+    --bs-btn-font-size: .40rem;
+}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
