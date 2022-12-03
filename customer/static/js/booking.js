@@ -1,8 +1,16 @@
-console.log('wtf')
+// console.log('wtf')
 
-function booking() {
+// function booking() {
+
+    
+
+
+// }
+
+function insert_data() {
+
     plan = document.getElementById('plan').value
-    phone = document.getElementById('').value
+    phone = document.getElementById('phone').value
     car_name = document.getElementById('car_name').value
     destination = document.getElementById('destination').value
     washing_date = document.getElementById('washing_date').value
@@ -12,7 +20,7 @@ function booking() {
     message = document.getElementById('message').value
     var number_pattern = /^[789]\d{9}$/
 
-    if (plan == "") {
+    if (plan == "Select a plan") {
         alert("Select Your Plan")
         return false
     }
@@ -41,22 +49,44 @@ function booking() {
         return false
     }
 
-    if(hour ==""){
+    if(hour =="Hour"){
         alert("please select time")
         return false
     }
 
-    if(minutes ==""){
+    if(minute =="Min"){
         alert("please select time")
         return false
     }
 
-    if(ampm ==""){
+    if(ampm =="AM/PM"){
         alert("please select time")
         return false
     }
 
-    
 
+    $.ajax({
+        url: "insert_data",
+        type: "post",
+        data: {
+            'plan': $('#plan').val(),
+            'phone': $('#phone').val(),
+            'car_name': $('#car_name').val(),
+            'destination': $('#destination').val(),
+            'washing_date': $('#washing_date').val(),
+            'hour': $('#hour').val(),
+            'minute': $('#minute').val(),
+            'ampm': $('#ampm').val(),
+            'message': $('#message').val(),
+        },
+        success: function (response) {
+            alert(response.message)
+            location.reload()  
+        }
+    })
+    // view_data()
+     
 
 }
+
+
