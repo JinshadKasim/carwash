@@ -1,0 +1,33 @@
+{% extends 'admi/dashboard.html' %}
+{% block content %}
+
+<h3 class="bookingHeading">Comleted Booking</h3>
+
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Feedback</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.feedback}}</td>
+        <td>{{i.current_date}}</td>
+        <td><button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+      </tr>
+      {% endfor %}
+      </table>
+
+  <div class="bbbt">
+    <button type="button" class="btn btn-primary" onclick="history.back()">Back to Home</button>
+  </div>
+  </div>
+
+
+{% endblock %}

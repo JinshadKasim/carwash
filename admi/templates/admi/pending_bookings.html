@@ -1,0 +1,43 @@
+{% extends 'admi/dashboard.html' %}
+{% block content %}
+
+<h3 class="bookingHeading">Pending Booking</h3>
+
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Booking Id</th>
+        <th scope="col">Plan</th>
+        <th scope="col">Carname</th>
+        <th scope="col">Date</th>
+        <th scope="col">Destination</th>
+        <th scope="col">Date</th>
+        <th scope="col">Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in data %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.plan}}</td>
+        <td>{{i.car_name}}</td>
+        <td>{{i.washing_date}}</td>
+        <td>{{i.destination}}</td>
+        <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
+        <td>{{i.status}}</td>
+        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+      </tr>
+      {% endfor %}
+      </table>
+
+  <div class="bbbt"><a href="{% url 'booking' %}">
+    <button type="button" class="btn btn-primary">Book a Car</button></a>
+    <br><br>
+    <button type="button" class="btn btn-primary" onclick="history.back()">Back to Home</button>
+  </div>
+  </div>
+
+
+{% endblock %}

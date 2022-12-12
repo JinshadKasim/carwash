@@ -19,6 +19,15 @@ function insert_data() {
     ampm = document.getElementById('ampm').value
     message = document.getElementById('message').value
     var number_pattern = /^[789]\d{9}$/
+    const newdate = new Date(washing_date)
+    const now = new Date();
+
+// let day = date.getDate();
+// let month = date.getMonth() + 1;
+// let year = date.getFullYear();
+
+// let currentDate = `${day}-${month}-${year}`;
+// console.log(currentDate); // "17-6-2022"
 
     if (plan == "Select a plan") {
         alert("Select Your Plan")
@@ -47,6 +56,10 @@ function insert_data() {
     if(washing_date ==""){
         alert("please select a date")
         return false
+    }
+    if(newdate < now){
+        alert("Date Must be in the Future")
+        return false 
     }
 
     if(hour =="Hour"){

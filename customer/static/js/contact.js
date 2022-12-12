@@ -61,3 +61,40 @@ const emailIsValid = email => {
 }
 
 submitBtn.addEventListener('click', validate);
+
+
+
+function insert_message(){
+  msg_name = $('#name').val()
+  msg_email = $('#email').val()
+  msg_message = $('#message').val()
+
+  if (msg_name == "") {
+    alert("Enter Your Name")
+    return false
+}
+  if (msg_email == "") {
+    alert("Enter Your E-Mail")
+    return false
+}
+  if (msg_message == "") {
+    alert("Enter Your Message")
+    return false
+}
+
+
+
+  $.ajax({
+    url: "insert_message",
+    type: "post",
+    data: {
+        'name': $('#name').val(),
+        'email': $('#email').val(),
+        'message': $('#message').val(),
+    },
+    success: function (response) {
+        alert(response.message)
+        location.reload()  
+    }
+})
+}

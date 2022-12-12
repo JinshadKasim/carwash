@@ -40,3 +40,8 @@ gsap.utils.toArray(".revealUp").forEach(function (elem) {
     }
   });
 });
+
+
+
+
+

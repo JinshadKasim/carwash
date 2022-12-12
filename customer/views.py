@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from customer.models import Users,Bookings
+from customer.models import Users,Bookings,Feedbacks,Messages
 from decorators import login_check,logout_check
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -106,7 +106,7 @@ def insertData(request):
         print(minute)
         print(ampm)
         print(message)
-        bookingObj = Bookings(plan=plan, phone=phone, car_name=car_name, destination=destination, washing_date=washing_date,hour=hour,minute=minute, ampm=ampm, message=message, user_id=current_user)
+        bookingObj = Bookings(status="Pending",plan=plan, phone=phone, car_name=car_name, destination=destination, washing_date=washing_date,hour=hour,minute=minute, ampm=ampm, message=message, user_id=current_user)
         bookingObj.save()
         print('Booking Success')
         return JsonResponse({'message':'Service Booked Successfully'})
@@ -120,7 +120,30 @@ def cancelBooking(request,id=0):
 def editData(request,id=0):
     id = request.POST.get('id')
     data = Bookings.objects.get(id=id)
-    model_to_dict(data)
+    # model_to_dict(data)
     print(data)
 
     return JsonResponse({'data': data})
+
+
+@csrf_exempt
+def insertFeedback(request):
+        feedback = request.POST.get('feedback')
+        date = request.POST.get('date')
+        print(feedback)
+        print(date)
+        feedbackObj = Feedbacks(feedback=feedback, current_date=date)
+        feedbackObj.save()
+        print('Booking Success')
+        return JsonResponse({'message':'Thankyou For Your Feedback'})
+
+
+@csrf_exempt
+def insertMessage(request):
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        messageObj = Messages(name=name, email=email, message=message)
+        messageObj.save()
+        print('Booking Success')
+        return JsonResponse({'message':'Thankyou, Your Message Has been Submitted Successfully'})

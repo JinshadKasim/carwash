@@ -14,6 +14,8 @@ urlpatterns = [
     path('login',views.login,name='login'),
     path('logout',views.logout,name='logout'),
     path('insert_data',views.insertData,name='insert_data'),
+    path('insert_message',views.insertMessage,name='insert_message'),
+    path('insert_feedback',views.insertFeedback,name='insert_feedback'),
     path('status/<int:id>',views.cancelBooking,name='cancel_booking'),
     path('edit_data',views.editData,name='edit_data'),
 

@@ -32,6 +32,7 @@
             <th scope="col">Date</th>
             <th scope="col">Destination</th>
             <th scope="col">Date</th>
+            <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -44,6 +45,7 @@
             <td>{{i.washing_date}}</td>
             <td>{{i.destination}}</td>
             <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
+            <td>{{i.status}}</td>
             <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#editData" onclick="editData('{{i.id}}')">Edit</button>&nbsp;
               <button type="BUtton" class="btn btn-danger btn-sm btnsz cb" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><span class="cbk">Cancel Booking</span></button></td>
           </tr>

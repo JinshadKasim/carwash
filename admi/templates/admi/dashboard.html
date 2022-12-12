@@ -27,15 +27,19 @@
                 <div> <a href="#" class="nav_logo"> <i class=' nav_logo-icon'><img
                                 src="{% static 'images/admin2.png' %}" alt="" class="adimg"></i> <span
                             class="nav_logo-name"></span> </a>
-                    <div class="nav_list"> <a href="{% url 'dashboard' %}" class="nav_link active"> <i class='bx bx-grid-alt nav_icon'></i>
-                            <span class="nav_name">Dashboard</span> </a> <a href="{% url 'employeeManagement' %}" class="nav_link"> <i
-                                class='bx bx-user nav_icon'></i> <span class="nav_name">Manage Employee</span> </a> <a href="#"
-                            class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
-                                class="nav_name">Messages</span> </a> <a href="#" class="nav_link"> <i
-                                class='bx bx-bookmark nav_icon'></i> <span class="nav_name"></span> </a> <a
-                            href="{% url 'serviceHistory' %}" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span
-                                class="nav_name">Service History</span> </a> <a href="#" class="nav_link"> <i
-                                class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a>
+                    <div class="nav_list"> <a href="{% url 'dashboard' %}" class="nav_link active"> <i
+                                class='bx bx-grid-alt nav_icon'></i>
+                            <span class="nav_name">Dashboard</span> </a> <a href="{% url 'employee_management' %}"
+                            class="nav_link"> <i class='bx bx-user nav_icon'></i> <span class="nav_name">Manage
+                                Employee</span> </a>
+                        <a href="{% url 'employee_register' %}" class="nav_link"> <i class='bx bx-user nav_icon'></i>
+                            <span class="nav_name">Register Employee</span> </a>
+
+                        <a href="messages" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
+                                class="nav_name">Messages</span>
+                        </a> <a href="{% url 'serviceHistory' %}" class="nav_link"> <i
+                                    class='bx bx-folder nav_icon'></i> <span class="nav_name">Service History</span>
+                            </a> 
                     </div>
                 </div> <a href="{% url 'admi' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
                         class="nav_name">Log-Out</span> </a>
@@ -46,52 +50,55 @@
             <h4>MPS Car Washing Center</h4>
             {% block content %}
 
-          <a href="{% url 'tbooking' %}">  <div class="total-booking">
-                
-                <i class='bx bx-user nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Total Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
+            <a href="{% url 'tbooking' %}">
+                <div class="total-booking">
 
-            </div>
+                    <i class='bx bx-user nav_icon total-booking-icon'></i>
+                    <span class="nav_name pstn">Total Booking</span>
+                    <br>
+                    <h5 class="count">{{total}}</h5>
+
+
+                </div>
             </a>
-            
-           <a href="{% url 'cbooking' %}"> <div class="total-booking">
-                
-                <i class='bx bx-user nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Completed Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
 
-            </div>
-            </a>
-            <a href="">
-            <div class="total-booking">
-                
-                <i class='bx bx-message-square-detail nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Unread Query Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
+            <a href="{% url 'pbooking' %}">
+                <div class="total-booking">
 
-            </div>
+                    <i class='bx bx-user nav_icon total-booking-icon'></i>
+                    <span class="nav_name pstn">Pending Booking</span>
+                    <br>
+                    <h5 class="count">{{pending}}</h5>
+
+
+                </div>
             </a>
             <a href="">
-            <div class="total-booking">
-                
-                <i class='bx bx-message-square-detail nav_icon total-booking-icon' ></i>
-                <span class="nav_name pstn">Read Booking</span>
-                <br>
-                <h5 class="count">0</h5>
-            
-            
-            </div>
-            </a>
+                <a href="{% url 'cbooking' %}">
+                    <div class="total-booking">
 
-            {% endblock %}
-            
+                        <i class='bx bx-user nav_icon total-booking-icon'></i>
+                        <span class="nav_name pstn">Completed Booking</span>
+                        <br>
+                        <h5 class="count">{{Completed}}</h5>
+
+
+                    </div>
+                </a>
+                <a href="feedbacks">
+                    <div class="total-booking">
+
+                        <i class='bx bx-message-square-detail nav_icon total-booking-icon'></i>
+                        <span class="nav_name pstn">Feedbacks</span>
+                        <br>
+                        <h5 class="count">{{feedbacks}}</h5>
+
+
+                    </div>
+                </a>
+
+                {% endblock %}
+
         </div>
         <!--Container Main end-->
 

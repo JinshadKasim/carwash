@@ -8,55 +8,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MP Water Service</title>
   <script src="{% static 'js/animation.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
   <link rel="stylesheet" href="{% static 'css/card.css' %}">
   <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-  
+
+
 </head>
 
-<body >
+<body>
 
-  
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
         <span style="color: tomato;">M</span>PS <span style="color: tomato;">C</span>ARWASH</span></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active "aria-current="page" href="#" style="padding-left: 130px;"><span class="hvr">HOME</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="#ser" style="padding-left: 130px;"><span class="hvr">SERVICES</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#fdbk" style="padding-left: 130px;"><span class="hvr">FEEDBACK</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url 'contact' %}" style="padding-left: 130px;"><span class="hvr">CONTACT&nbsp;US</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="{% url 'reg' %}" style="padding-left: 130px;"><span class="hvr">LOG&nbsp;IN</span></a>
-            </li>
-            <li class="nav-item dropdown">
-            </li>
-          </ul>
-        </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="#" style="padding-left: 130px;"><span
+                class="hvr">HOME</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#ser" style="padding-left: 130px;"><span class="hvr">SERVICES</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#fdbk" style="padding-left: 130px;"><span
+                class="hvr">FEEDBACK</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'contact' %}" style="padding-left: 130px;"><span
+                class="hvr">CONTACT&nbsp;US</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'reg' %}" style="padding-left: 130px;"><span
+                class="hvr">LOG&nbsp;IN</span></a>
+          </li>
+          <li class="nav-item dropdown">
+          </li>
+        </ul>
       </div>
-    </nav>
-    <div class="div-700">
-     <label class="hdng-1">Welcome To </label><br>
-     <label class="hdng-2">MPS Water Service</label> 
-     </div>
+    </div>
+  </nav>
+  <div class="div-700">
+    <label class="hdng-1">Welcome To </label><br>
+    <label class="hdng-2">MPS Water Service</label>
+  </div>
 
   <!-- <div class="container-fluid"
     style="padding-top: 750px; background-image: url('/static/images/car.jpg'); background-repeat: no-repeat; background-position: center; background-size: 100%;">
@@ -66,124 +74,131 @@
         MPS WATER SERVICE
       </span>
     </div> -->
-    <!-- <h1 class="mb-3 h2" style="font-size: 40px; color: rgb(10, 13, 15);z-index: -1; ">Hello How are You</h1> -->
-  </div> 
+  <!-- <h1 class="mb-3 h2" style="font-size: 40px; color: rgb(10, 13, 15);z-index: -1; ">Hello How are You</h1> -->
+  </div>
   <br>
   <div class="headingdiv" id="ser">
-  <h1 class="heading">OUR SERVICES</h1>
-  <center><hr width="40%"></center>
-  </div>  <br>
+    <h1 class="heading">OUR SERVICES</h1>
+    <center>
+      <hr width="40%">
+    </center>
+  </div> <br>
   <center>
-  <div class="product-card">
-		<div class="product-tumb">
-			<img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%" >
-		</div>
-		<div class="product-details">
-			<span class="product-catagory"></span>
-			<h4><a href="{% url 'reg' %}">BASIC SERVICE</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-			<div class="product-bottom-details">
-				<div class="product-price"><small>Rs.250</small>Rs.200</div>
-				<div class="product-links">
-				
-				</div>
-			</div>
+    <div class="product-card">
+      <div class="product-tumb">
+        <img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%">
+      </div>
+      <div class="product-details">
+        <span class="product-catagory"></span>
+        <h4><a href="{% url 'reg' %}">BASIC SERVICE</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+        <div class="product-bottom-details">
+          <div class="product-price"><small>Rs.250</small>Rs.200</div>
+          <div class="product-links">
 
-		</div>
-	</div>
-  <div class="product-card">
-		<div class="product-tumb">
-			<img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%" >
-		</div>
-		<div class="product-details">
-			<span class="product-catagory"></span>
-			<h4><a href="{% url 'reg' %}">PREMIUM SERVICE</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-			<div class="product-bottom-details">
-				<div class="product-price"><small>Rs:550</small>Rs:500</div>
-				<div class="product-links">
-				
-				</div>
-			</div>
-        
-		</div>
-	</div>
+          </div>
+        </div>
 
-  <div class="product-card">
-		<div class="product-tumb">
-			<img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%" >
-		</div>
-		<div class="product-details">
-			<span class="product-catagory"></span>
-			<h4><a href="{% url 'reg' %}">COMPLEX SERVICE</a></h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
-			<div class="product-bottom-details">
-				<div class="product-price"><small>Rs.850</small>Rs.800</div>
-				<div class="product-links">
-				
-				</div>
-			</div>
-        
-		</div>
-</div>
-</center>
-<br><br><br>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-tumb">
+        <img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%">
+      </div>
+      <div class="product-details">
+        <span class="product-catagory"></span>
+        <h4><a href="{% url 'reg' %}">PREMIUM SERVICE</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+        <div class="product-bottom-details">
+          <div class="product-price"><small>Rs:550</small>Rs:500</div>
+          <div class="product-links">
 
-<div class="feedback-cls" id="fdbk">
-  <h1 class="feedback-hdd">FEEDBACK</h1>
-  <center><hr width="40%"></center>
-  </div>  <br><br><br>
+          </div>
+        </div>
 
-<!-- <center><label style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-decoration: underline; font-size: 30px;" id="fdbk">Feedback </label></center> -->
-<input type="text" placeholder="Enter Feedback" class="feeback-inp" />
-<br><br>
-<center><button type="button" class="btn btn-dark" style="background-color: rgb(64, 61, 61);">Submit</button></center>
-   <br><br><br><br><br>
+      </div>
+    </div>
 
-    <script src='https://use.fontawesome.com/7dd91a0fb4.js'></script>  
- 
-      <footer class="footer">
-           <div class="row">
-             <div class="footer-col">
-               <h4>company</h4>
-               <ul>
-                 <li><a href="#">about us</a></li>
-                 <li><a href="#">our services</a></li>
-                 <li><a href="#">privacy policy</a></li>
-                 <li><a href="#">affiliate program</a></li>
-               </ul>
-             </div>
-             <div class="footer-col">
-               <h4>get help</h4>
-               <ul>
-                 <li><a href="#">FAQ</a></li>
-                 <li><a href="#">shipping</a></li>
-                 <li><a href="#">returns</a></li>
-                 <li><a href="#">order status</a></li>
-                 <li><a href="#">payment options</a></li>
-               </ul>
-             </div>
-             <div class="footer-col">
-               <h4>online shop</h4>
-               <ul>
-                 <li><a href="#">watch</a></li>
-                 <li><a href="#">bag</a></li>
-                 <li><a href="#">shoes</a></li>
-                 <li><a href="#">dress</a></li>
-               </ul>
-             </div>
-             <div class="footer-col">
-               <h4>follow us</h4>
-               <div class="social-links">
-                 <a href="#"><i class="fab fa-facebook-f"></i></a>
-                 <a href="#"><i class="fab fa-twitter"></i></a>
-                 <a href="#"><i class="fab fa-instagram"></i></a>
-                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
-               </div>
-             </div>
-           </div>
-      </footer>
-    
+    <div class="product-card">
+      <div class="product-tumb">
+        <img src="{% static 'images/washing.jpg' %}" alt="" width="100%" height="100%">
+      </div>
+      <div class="product-details">
+        <span class="product-catagory"></span>
+        <h4><a href="{% url 'reg' %}">COMPLEX SERVICE</a></h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p>
+        <div class="product-bottom-details">
+          <div class="product-price"><small>Rs.850</small>Rs.800</div>
+          <div class="product-links">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </center>
+  <br><br><br>
+
+  <div class="feedback-cls" id="fdbk">
+    <h1 class="feedback-hdd">FEEDBACK</h1>
+    <center>
+      <hr width="40%">
+    </center>
+  </div> <br><br><br>
+  <form method="post">
+    <!-- <center><label style="font-family: Verdana, Geneva, Tahoma, sans-serif; text-decoration: underline; font-size: 30px;" id="fdbk">Feedback </label></center> -->
+    <input type="text" placeholder="Enter Feedback" class="feeback-inp" name="feedback" id="feedback" />
+    <br><br>
+    <center><button type="button" class="btn btn-dark" style="background-color: rgb(64, 61, 61);" onclick="insert_feedback()">Submit</button>
+    </center>
+  </form>
+  <br><br><br><br><br>
+
+
+  <script src='https://use.fontawesome.com/7dd91a0fb4.js'></script>
+
+  <footer class="footer">
+    <div class="row">
+      <div class="footer-col">
+        <h4>company</h4>
+        <ul>
+          <li><a href="#">about us</a></li>
+          <li><a href="#">our services</a></li>
+          <li><a href="#">privacy policy</a></li>
+          <li><a href="#">affiliate program</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>get help</h4>
+        <ul>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">shipping</a></li>
+          <li><a href="#">returns</a></li>
+          <li><a href="#">order status</a></li>
+          <li><a href="#">payment options</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>online shop</h4>
+        <ul>
+          <li><a href="#">watch</a></li>
+          <li><a href="#">bag</a></li>
+          <li><a href="#">shoes</a></li>
+          <li><a href="#">dress</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>follow us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
 </body>
 
