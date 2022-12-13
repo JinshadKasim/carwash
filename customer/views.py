@@ -56,9 +56,6 @@ def status(request):
     return render(request,'customer/status.html',{'bookings':user_bookings,'user':user})
 @logout_check    
 def login(request):
-    print("Hello world")
-    user = Users.objects.all()
-    print(user)
 
     if request.method == 'POST':
         email = request.POST['email']

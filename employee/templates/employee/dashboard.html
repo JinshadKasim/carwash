@@ -10,8 +10,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js ">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <script src="{% static 'js/dashboard.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/emp_dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/emp_change_password.css' %}">
+    <script src="{% static 'js/emp_dashboard.js' %}"></script>
+    <script src="{% static 'js/emp_change_password.js' %}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">''
     <title>Document</title>
 </head>
 
@@ -25,19 +28,22 @@
         <div class="l-navbar" id="nav-bar">
             <nav class="nav">
                 <div> <a href="#" class="nav_logo"> <i class=' nav_logo-icon'><img
-                                src="{% static 'images/admin2.png' %}" alt="" class="adimg"></i> <span
+                                src="{% static 'images/emp.png' %}" alt="" class="adimg"></i> <span
                             class="nav_logo-name"></span> </a>
-                    <div class="nav_list"> <a href="{% url 'dashboard' %}" class="nav_link active"> <i
+                    <div class="nav_list"> <a href="{% url 'emp_dashboard' %}" class="nav_link active"> <i
                                 class='bx bx-grid-alt nav_icon'></i>
                             <span class="nav_name">Dashboard</span> </a> 
 
                         <a href="messages" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i> <span
                                 class="nav_name">Messages</span>
-                        </a> <a href="{% url 'serviceHistory' %}" class="nav_link"> <i
+                        </a> <a href="{% url 'emp_serviceHistory' %}" class="nav_link"> <i
                                     class='bx bx-folder nav_icon'></i> <span class="nav_name">Service History</span>
                             </a> 
+                        <a href="{% url 'emp_change_password' %}" class="nav_link"> <i
+                                    class='bi-key'></i> <span class="nav_name">Change Password</span>
+                            </a> 
                     </div>
-                </div> <a href="{% url 'admi' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                </div> <a href="{% url 'employee_logout' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
                         class="nav_name">Log-Out</span> </a>
             </nav>
         </div>
@@ -46,7 +52,7 @@
             <h4>MPS Car Washing Center</h4>
             {% block content %}
 
-            <a href="{% url 'tbooking' %}">
+            <a href="{% url 'emp_tbooking' %}">
                 <div class="total-booking">
 
                     <i class='bx bx-user nav_icon total-booking-icon'></i>
@@ -58,7 +64,7 @@
                 </div>
             </a>
 
-            <a href="{% url 'pbooking' %}">
+            <a href="{% url 'emp_pbooking' %}">
                 <div class="total-booking">
 
                     <i class='bx bx-user nav_icon total-booking-icon'></i>
@@ -70,7 +76,7 @@
                 </div>
             </a>
             <a href="">
-                <a href="{% url 'cbooking' %}">
+                <a href="{% url 'emp_cbooking' %}">
                     <div class="total-booking">
 
                         <i class='bx bx-user nav_icon total-booking-icon'></i>

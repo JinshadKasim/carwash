@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <script src="{% static 'js/dashboard.js' %}"></script>
+    <script src="{% static 'js/admin_dashboard.js' %}"></script>
+    <script src="{% static 'js/emp_register.js' %}"></script>
+
     <title>Document</title>
 </head>
 
@@ -41,7 +43,7 @@
                                     class='bx bx-folder nav_icon'></i> <span class="nav_name">Service History</span>
                             </a> 
                     </div>
-                </div> <a href="{% url 'admi' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
+                </div> <a href="{% url 'admin_logout' %}" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span
                         class="nav_name">Log-Out</span> </a>
             </nav>
         </div>

@@ -2,6 +2,13 @@
 {% block content %}
 
 <h3 class="bookingHeading">Employee Register</h3>
+<script>
+    if ('{{message}}'==true){
+        alert('{{message}}')
+    }
+
+    
+</script>
 
 <!-- <br><br><br>
 <form method="post">
@@ -43,7 +50,7 @@
             <div class="row">
                 <div class="booking-form">
 
-                    <form method="post">
+                    <form method="post" onsubmit="return register_employee()">
                         {% csrf_token %}
                         <!-- <div class="row">
                             <div class="col-sm-6">
@@ -62,7 +69,7 @@
                         <div class="form-group">
                             <span class="form-label">Name</span>
                             <input class="form-control" type="text" placeholder="Enter Employee Name" name="emp_name"
-                                id="phone">
+                                id="emp_name">
 
                             <span class="select-arrow"></span>
                         </div>
@@ -73,11 +80,11 @@
                         </div>
                         <div class="form-group">
                             <span class="form-label">E-Mail</span>
-                            <input class="form-control" type="email" placeholder="Enter Email" name="email" id="phone">
+                            <input class="form-control" type="email" placeholder="Enter Email" name="email" id="email">
                         </div>
                         <div class="form-group">
                             <span class="form-label">Date of Birth</span>
-                            <input class="form-control" type="date" name="dob">
+                            <input class="form-control" type="date" name="dob" id="dob">
                         </div>
                         <div class="form-group">
                             <span class="form-label">Address</span>
@@ -101,19 +108,18 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <span class="form-label">Id Proof Number</span>
-                                        <input class="form-control" type="number" name="dob">
+                                        <input class="form-control" type="number" name="idproofnumber" id="idproofnumber">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <span class="form-label">Photo</span>
-                            <input class="form-control" type="file" name="message" id="message">
+                            <input class="form-control" type="file" name="emp_photo" id="emp_photo">
                         </div>
                         <div class="form-btn">
                             <br>
-                            <button class="btn btn-primary" type="button"
-                                onclick="return insert_data()">Register</button>
+                            <button class="btn btn-primary" type="submit">Register</button>
                         </div>
                         <br>
                         <div class="form-btn">
@@ -125,7 +131,6 @@
         </div>
     </div>
 </div>
-
 
 
 
