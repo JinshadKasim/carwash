@@ -1,91 +1,99 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Status</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="{% static 'js/status.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/status.css' %}">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Status</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="{% static 'js/status.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/status.css' %}">
 </head>
+
 <body>
-    <div class="rspnsv">
+  <div class="rspnsv">
     <div class="cusd">
-    <img src="{% static 'images/customer1.jpg' %}" alt="" class="cus1">
+      <img src="{% static 'images/customer1.jpg' %}" alt="" class="cus1">
     </div>
     <div class="cusd2">
-        <h1 class="cstmr">Hello {{user.name}}</h1>
-    <span class="status">Your Service status</span>
+      <h1 class="cstmr">Hello {{user.name}}</h1>
+      <span class="status">Your Service status</span>
     </div>
     <br>
 
     <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Booking Id</th>
-            <th scope="col">Plan</th>
-            <th scope="col">Carname</th>
-            <th scope="col">Date</th>
-            <th scope="col">Destination</th>
-            <th scope="col">Date</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for i in bookings %}
-          <tr>
-            <th scope="row">{{i.id}}</th>
-            <td>{{i.plan}}</td>
-            <td>{{i.car_name}}</td>
-            <td>{{i.washing_date}}</td>
-            <td>{{i.destination}}</td>
-            <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
-            <td>{{i.status}}</td>
-            <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#editData" onclick="editData('{{i.id}}')">Edit</button>&nbsp;
-              <button type="BUtton" class="btn btn-danger btn-sm btnsz cb" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><span class="cbk">Cancel Booking</span></button></td>
-          </tr>
-          <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel Booking</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you Sure You Want to Cancel your Booking?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-       <a href="status/{{i.id}}"> <button type="button" class="btn btn-danger">Yes</button></a>
-      </div>
-    </div>
-  </div>
-</div>
+      <thead>
+        <tr>
+          <th scope="col">Booking Id</th>
+          <th scope="col">Plan</th>
+          <th scope="col">Carname</th>
+          <th scope="col">Date</th>
+          <th scope="col">Destination</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in bookings %}
+        <tr>
+          {% csrf_token %}
+          <th scope="row">{{i.id}}</th>
+          <td>{{i.plan}}</td>
+          <td>{{i.car_name}}</td>
+          <td>{{i.washing_date}}</td>
+          <td>{{i.destination}}</td>
+          <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
+          <td>{{i.status}}</td>
+          <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#editData"
+              onclick="editData('{{i.id}}')">Edit</button>&nbsp;
+            <button type="BUtton" class="btn btn-danger btn-sm btnsz cb" data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop" onclick="delete_booking('{{i.id}}')"><span class="cbk">Cancel Booking</span></button>
+          </td>
+        </tr>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel Booking</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you Sure You Want to Cancel your Booking?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a href="" id="cancel_booking_btn"> <button type="button" class="btn btn-danger">Yes</button></a>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-<div class="modal fade" id="editData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Booking</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-       
-        <div id="booking" class="section">
-          <div class="section-center">
-            <div class="container">
-              <div class="row">
-                <div class="booking-form">
-                  <form method="post">
-                    {% csrf_token %}
-                    <!-- <div class="row">
+        <div class="modal fade" id="editData" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Booking</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <div id="booking" class="section">
+                  <div class="section-center">
+                    <div class="container">
+                      <div class="row">
+                        <div class="booking-form">
+                          <form method="post">
+                            {% csrf_token %}
+                            <!-- <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
                           <span class="form-label">Name</span>
@@ -99,121 +107,132 @@
                         </div>
                       </div>
                     </div> -->
-                    <div class="form-group">
-                      <span class="form-label">Booking ID</span>
-                      <input class="form-control" required name="id" id="id" value="{{i.id}}" disabled />
-                      <span class="form-label">Select Plan</span>
-                      <select class="form-control" required name="plan" id="plan" value="{{i.plan}}">
-                        <option selected disabled>Select a Plan</option>
-                        <option>Basic Service</option>
-                        <option>Premium Service</option>
-                        <option>Complex Service</option>
-                      </select>
-                      <span class="select-arrow"></span>
-                    </div>
-                    <div class="form-group">
-                      <span class="form-label">Phone</span>
-                      <input class="form-control" type="tel" placeholder="Enter your phone number" name="phone" id="phone" value="{{i.phone}}">
-                    </div>
-                    <div class="form-group">
-                      <span class="form-label">Car Name</span>
-                      <input class="form-control" type="text" placeholder="Car Model" name="car_name" id="car_name" value="{{i.car_name}}">
-                    </div>
-                    <div class="form-group">
-                      <span class="form-label">Destination</span>
-                      <input class="form-control" type="text" placeholder="Enter ZIP/Location" name="destination" id="destination" value="{{i.destination}}">
-                    </div>
-                    <div class="row">
-                      <div class="col-sm-5">
-                        <div class="form-group">
-                          <span class="form-label">Washing Date</span>
-                          <input class="form-control" type="date" required name="washing_date" id="washing_date" value="{{i.washing_date}}">
-                        </div>
-                      </div>
-                      <div class="col-sm-7">
-                        <div class="row">
-                          <div class="col-sm-4">
                             <div class="form-group">
-                              <span class="form-label">Hour</span>
-                              <select class="form-control" name="hour" id="hour" value="{{i.hour}}">
-                                <option selected disabled>Hour</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
+                              <span class="form-label">Booking ID</span>
+                              <input class="form-control" required name="e_id" id="e_id" disabled />
+                              <input class="form-control" type="hidden" name="id" id="id" />
+                              <span class="form-label">Status</span>
+                              <input class="form-control" required name="id" id="status" disabled />
+                              <span class="form-label">Select Plan</span>
+                              <select class="form-control" required name="plan" id="plan" value="{{i.plan}}">
+                                <option selected disabled>Select a Plan</option>
+                                <option>Basic Service</option>
+                                <option>Premium Service</option>
+                                <option>Complex Service</option>
                               </select>
                               <span class="select-arrow"></span>
                             </div>
-                          </div>
-                          <div class="col-sm-4">
                             <div class="form-group">
-                              <span class="form-label">Min</span>
-                              <select class="form-control" name="minute" id="minute" value="{{i.minute}}">
-                                <option selected disabled>Min</option>
-                                <option>00</option>
-                                <option>05</option>
-                                <option>10</option>
-                                <option>15</option>
-                                <option>20</option>
-                                <option>25</option>
-                                <option>30</option>
-                                <option>35</option>
-                                <option>40</option>
-                                <option>45</option>
-                                <option>50</option>
-                                <option>55</option>
-                              </select>
-                              <span class="select-arrow"></span>
+                              <span class="form-label">Phone</span>
+                              <input class="form-control" type="tel" placeholder="Enter your phone number" name="phone"
+                                id="phone" value="{{i.phone}}">
                             </div>
-                          </div>
-                          <div class="col-sm-4">
                             <div class="form-group">
-                              <span class="form-label">AM/PM</span>
-                              <select class="form-control" name="ampm" id="ampm" >
-                                <option selected disabled>AM/PM</option>
-                                <option>AM</option>
-                                <option>PM</option>
-                              </select>
-                              <span class="select-arrow"></span>
+                              <span class="form-label">Car Name</span>
+                              <input class="form-control" type="text" placeholder="Car Model" name="car_name"
+                                id="car_name">
                             </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                            <div class="form-group">
+                              <span class="form-label">Destination</span>
+                              <input class="form-control" type="text" placeholder="Enter ZIP/Location"
+                                name="destination" id="destination" value="{{i.destination}}">
+                            </div>
+                            <div class="row">
+                              <div class="col-sm-5">
+                                <div class="form-group">
+                                  <span class="form-label">Washing Date</span>
+                                  <input class="form-control" type="date" required name="washing_date" id="washing_date"
+                                    value="{{i.washing_date}}">
+                                </div>
+                              </div>
+                              <div class="col-sm-7">
+                                <div class="row">
+                                  <div class="col-sm-4">
+                                    <div class="form-group">
+                                      <span class="form-label">Hour</span>
+                                      <select class="form-control" name="hour" id="hour" value="{{i.hour}}">
+                                        <option selected disabled>Hour</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                        <option>11</option>
+                                        <option>12</option>
+                                      </select>
+                                      <span class="select-arrow"></span>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group">
+                                      <span class="form-label">Min</span>
+                                      <select class="form-control" name="minute" id="minute">
+                                        <option selected disabled>Min</option>
+                                        <option>00</option>
+                                        <option>05</option>
+                                        <option>10</option>
+                                        <option>15</option>
+                                        <option>20</option>
+                                        <option>25</option>
+                                        <option>30</option>
+                                        <option>35</option>
+                                        <option>40</option>
+                                        <option>45</option>
+                                        <option>50</option>
+                                        <option>55</option>
+                                      </select>
+                                      <span class="select-arrow"></span>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group">
+                                      <span class="form-label">AM/PM</span>
+                                      <select class="form-control" name="ampm" id="ampm">
+                                        <option selected disabled>AM/PM</option>
+                                        <option>AM</option>
+                                        <option>PM</option>
+                                      </select>
+                                      <span class="select-arrow"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
 
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="bbbt"><a href="{% url 'booking' %}">
+        <button type="button" class="btn btn-primary">Book Another Car</button></a>
+      <br><br>
+      <a href="home"><button type="button" class="btn btn-primary">Back to Home</button></a>
     </div>
   </div>
-</div>
-
-
-          {% endfor %}
-        </tbody>
-      </table>
-
-      <div class="bbbt"><a href="{% url 'booking' %}">
-        <button type="button" class="btn btn-primary">Book Another Car</button></a>
-        <br><br>
-        <a href="home"><button type="button" class="btn btn-primary">Back to Home</button></a>
-      </div>
-      </div>
 
 
 
-      
-    
+
+
 </body>
+
 </html>

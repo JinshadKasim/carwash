@@ -16,8 +16,9 @@ urlpatterns = [
     path('insert_data',views.insertData,name='insert_data'),
     path('insert_message',views.insertMessage,name='insert_message'),
     path('insert_feedback',views.insertFeedback,name='insert_feedback'),
-    path('status/<int:id>',views.cancelBooking,name='cancel_booking'),
     path('edit_data',views.editData,name='edit_data'),
+    path('delete_booking',views.deleteData,name='delete_booking'),
+    path('cancel_booking/<int:id>',views.cancel_booking,name='cancel_booking'),
 
 
 ]

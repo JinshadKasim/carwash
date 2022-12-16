@@ -15,4 +15,5 @@ urlpatterns = [
      path('feedbacks',views.emp_feedbacks,name='emp_feedbacks'),
      path('messages',views.emp_messages,name='emp_messages'),
      path('change_password',views.emp_change_password,name='emp_change_password'),
+     path('emp_profile',views.emp_profile,name='emp_profile'),
 ]

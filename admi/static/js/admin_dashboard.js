@@ -36,3 +36,35 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
      // Your code to run since DOM is loaded and ready
     });
+
+
+function edit_employee_details(id){
+    console.log(id)
+
+    $.ajax({
+        url:"edit_employee_data",
+        type:"post",
+        data: {
+            'id': id,
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        },
+        success: function(response) {
+            console.log(response.data)
+            document.getElementById('delete_url').href='delete_employee_data/'+response.data.id
+            $("#manage_emp").css("display", "none")
+            $("#edit_emp").css("display", "block")
+
+            $('#emp_id').val(response.data.id)
+            $('#id').val(response.data.id)
+            $('#emp_name').val(response.data.name)
+            $('#phone').val(response.data.phone)
+            $('#email').val(response.data.email)
+            $('#dob').val(response.data.dob)
+            $('#address').val(response.data.address)
+            $('#idproof').val(response.data.idproof)
+            $('#idproofnum').val(response.data.idproofnum)
+            $('#photo').val(response.data.photo)
+            $('#password').val(response.data.password)
+        }
+    })
+}

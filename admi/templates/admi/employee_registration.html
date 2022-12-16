@@ -3,11 +3,11 @@
 
 <h3 class="bookingHeading">Employee Register</h3>
 <script>
-    if ('{{message}}'==true){
+    if ('{{message}}' == true) {
         alert('{{message}}')
     }
 
-    
+
 </script>
 
 <!-- <br><br><br>
@@ -76,11 +76,15 @@
                         <div class="form-group">
                             <span class="form-label">Phone</span>
                             <input class="form-control" type="tel" placeholder="Enter phone number" name="phone"
-                                id="phone">
+                                id="phone" onchange="emp_checkNumberExist()">
+                            <span id="emp_numberError" style="color: red;"></span>
+
                         </div>
                         <div class="form-group">
                             <span class="form-label">E-Mail</span>
-                            <input class="form-control" type="email" placeholder="Enter Email" name="email" id="email">
+                            <input class="form-control" type="email" onchange="emp_checkEmailExist()"
+                                placeholder="Enter Email" name="email" id="email">
+                            <span id="emp_emailError" style="color: red;"></span>
                         </div>
                         <div class="form-group">
                             <span class="form-label">Date of Birth</span>
@@ -97,9 +101,9 @@
                                     <span class="form-label">Id Proof</span>
                                     <select class="form-control" type="date" required name="idproof" id="idproof">
                                         <option value="" selected disabled>Select</option>
-                                        <option value="aadhar">Aadhar</option>
-                                        <option value="dl">Driving License</option>
-                                        <option value="dl">Pan Card</option>
+                                        <option value="Aadhar Card">Aadhar</option>
+                                        <option value="Driving License">Driving License</option>
+                                        <option value="Pan Card">Pan Card</option>
                                     </select>
 
                                 </div>
@@ -108,7 +112,8 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <span class="form-label">Id Proof Number</span>
-                                        <input class="form-control" type="number" name="idproofnumber" id="idproofnumber">
+                                        <input class="form-control" type="number" name="idproofnumber"
+                                            id="idproofnumber">
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +124,7 @@
                         </div>
                         <div class="form-btn">
                             <br>
-                            <button class="btn btn-primary" type="submit">Register</button>
+                            <button class="btn btn-primary" type="submit" id="emp_submit">Register</button>
                         </div>
                         <br>
                         <div class="form-btn">

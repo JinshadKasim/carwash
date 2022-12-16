@@ -1,0 +1,61 @@
+{% extends 'employee/dashboard.html' %}
+{% block content %}
+<div>
+<h3 class="bookingHeading">Profile</h3>
+</div>
+
+<br><br><br>
+
+
+<div id="booking" class="section">
+    <div class="section-center">
+        <div class="container" style="display: flex; justify-content: center; align-items: center;">
+            <div class="row" style="width: 100%;">
+               <table class="table">
+                <tr>
+                    <th>em_ID</th>
+                    <th>{{data.id}}</th>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{data.emp_name}}</td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>{{data.emp_phone}}</td>
+                </tr>
+                <tr>
+                    <td>E-Mail</td>
+                    <td>{{data.emp_email}}</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth</td>
+                    <td>{{data.emp_dob}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>{{data.emp_address}}</td>
+                </tr>
+                <tr>
+                    <td>Id Proof</td>
+                    <td>{{data.emp_idproof}}</td>
+                </tr>
+                <tr>
+                    <td>Id Proof Number</td>
+                    <td>{{data.emp_idproofnum}}</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>{{data.emp_password}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'emp_change_password' %}"><button class="btn btn-primary">Change Password</button></a></td>
+                </tr>
+               </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

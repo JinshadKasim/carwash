@@ -52,7 +52,20 @@ def status(request):
     user = Users.objects.get(id=request.session['userId'])
     user_bookings = Bookings.objects.filter(user_id=request.session['userId'])
     print(user_bookings)
+    if request.method == 'POST':
+        e_id = request.POST['id']
+        plan = request.POST['plan']
+        phone = request.POST['phone']
+        car_name = request.POST['car_name']
+        destination = request.POST['destination']
+        washing_date = request.POST['washing_date']
+        hour = request.POST['hour']
+        minute = request.POST['minute']
+        ampm = request.POST['ampm']
+        bookingObj = Bookings.objects.filter(id=e_id).update(plan=plan, phone=phone, car_name=car_name, destination=destination, washing_date=washing_date,hour=hour,minute=minute, ampm=ampm)
 
+    
+        return redirect('status')
     return render(request,'customer/status.html',{'bookings':user_bookings,'user':user})
 @logout_check    
 def login(request):
@@ -109,17 +122,13 @@ def insertData(request):
         return JsonResponse({'message':'Service Booked Successfully'})
 
 
-def cancelBooking(request,id=0):
-    bookingObj = Bookings.objects.get(id = id).delete()
-    return redirect('status')
-    
-
 def editData(request,id=0):
     id = request.POST.get('id')
-    data = Bookings.objects.get(id=id)
+    print(id)
+    datas = Bookings.objects.get(id=id)
     # model_to_dict(data)
-    print(data)
-
+    #print(data.car_name)
+    data={'id': datas.id,'plan':datas.plan,'phone':datas.phone,'car_name':datas.car_name,'destination':datas.destination,'washing_date':datas.washing_date,'hour':datas.hour,'minute':datas.minute,'ampm':datas.ampm,'message':datas.message,'status':datas.status}
     return JsonResponse({'data': data})
 
 
@@ -141,6 +150,18 @@ def insertMessage(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
         messageObj = Messages(name=name, email=email, message=message)
-        messageObj.save()
+        messageObj.save(   )
         print('Booking Success')
         return JsonResponse({'message':'Thankyou, Your Message Has been Submitted Successfully'})
+
+
+def deleteData(request,id=0):
+    id = request.POST.get('id')
+    print(id)
+    data=Bookings.objects.get(id=id)
+    data = {'id':data.id}
+    return JsonResponse({'data': data})
+
+def cancel_booking(request,id=0):
+    Bookings.objects.get(id=id).delete()
+    return redirect("status")

@@ -1,81 +1,165 @@
 {% extends 'admi/dashboard.html' %}
 {% block content %}
-
-        
-       <h2 class="empHeading">Employee Management</h2>
-       
+<div id="manage_emp" style="display: block;">
+  <h2 class="empHeading">Employee Management</h2>
 
 
-<br><br><br>
-<table class="table table-striped">
+  <br><br><br>
+  <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">Sr.No</th>
         <th scope="col">Emp_ID</th>
-        <th scope="col">Emp_Name</th>
+        <th scope="col">Name</th>
         <th scope="col">Phone</th>
+        <th scope="col">E-Mail</th>
+        <th scope="col">Date of Birth</th>
         <th scope="col">Address</th>
-        <th scope="col">DOB</th>
-        <th scope="col">shift</th>
+        <th scope="col">Id-Proof</th>
+        <th scope="col">Id-Proof Number</th>
+        <th scope="col">Password</th>
         <th scope="col">Action</th>
       </tr>
-    </thead>
-    <tbody>
+      {% for i in data %}
+      {% csrf_token %}
       <tr>
-        <th scope="row">1</th>
-        <td>100</td>
-        <td>Abhinav TP</td>
-        <td>989656748</td>
-        <td>Kattangal</td>
-        <td>19/01/2002</td>
-        <td>7PM-1PM</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
+        <td>{{i.id}}</td>
+        <td>{{i.emp_name}}</td>
+        <td>{{i.emp_phone}}</td>
+        <td>{{i.emp_email}}</td>
+        <td>{{i.emp_dob}}</td>
+        <td>{{i.emp_address}}</td>
+        <td>{{i.emp_idproof}}</td>
+        <td>{{i.emp_idproofnum}}</td>
+        <td>{{i.emp_password}}</td>
+        <td><button type="button" class="btn btn-secondary btnsz"
+            onclick="edit_employee_details('{{i.id}}')">Edit</button></a>&nbsp;</td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>101</td>
-        <td>Anwer</td>
-        <td>87688846</td>
-        <td>Koduvally</td>
-        <td>21/5/1999</td>
-        <td>7PM-1PM</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>103</td>
-        <td>Favas M</td>
-        <td>9098756430</td>
-        <td>Kunnamangalam</td>
-        <td>4/5/2000</td>
-        <td>1PM-6PM</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>104</td>
-        <td>Misbah PK</td>
-        <td>9870654628</td>
-        <td>Kattangal</td>
-        <td>17/9/1999</td>
-        <td>1PM-6PM</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;</td>
-      </tr>
-    </tbody>
+
+      {% endfor %}
+
+      </tbody>
   </table>
 
   <div class="bbbt"><a href="{% url 'employee_register' %}">
-    <button type="button" class="btn btn-primary">Add Employee</button></a>
+      <button type="button" class="btn btn-primary">Add Employee</button></a>
     <br><br>
-   <a href="{% url 'dashboard' %}"> <button type="button" class="btn btn-primary">Back to Home</button></a>
+    <a href="{% url 'dashboard' %}"> <button type="button" class="btn btn-primary">Back to Home</button></a>
   </div>
+</div>
+
+
+
+<div style="display: none; width: 100%;" id="edit_emp">
+
+
+  <h3 class="bookingHeading">Employee Register</h3>
+
+  <div id="booking" class="section">
+      <div class="section-center">
+          <div class="container">
+              <div class="row">
+                  <div class="booking-form">
+  
+                      <form method="post" onsubmit="return edit_employee()">
+                          {% csrf_token %}
+                          <!-- <div class="row">
+                              <div class="col-sm-6">
+                                  <div class="form-group">
+                                      <span class="form-label">Name</span>
+                                      <input class="form-control" type="text" placeholder="Enter your name">
+                                  </div>
+                              </div>
+                              <div class="col-sm-6">
+                                  <div class="form-group">
+                                      <span class="form-label">Email</span>
+                                      <input class="form-control" type="email" placeholder="Enter your email">
+                                  </div>
+                              </div>
+                          </div> -->
+                          <div class="form-group">
+                              <span class="form-label">ID</span>
+                              <input class="form-control" type="number" id="id" value="{{data.id}}" placeholder="Enter Employee Name" disabled>
+                                  <input type="hidden" name="empl_id" id="emp_id" value="{{data.id}}">
+                              <span class="form-label">Name</span>
+                              <input class="form-control" type="text" value="{{data.emp_name}}" placeholder="Enter Employee Name" name="emp_name"
+                                  id="emp_name">
+  
+                              <span class="select-arrow"></span>
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">Phone</span>
+                              <input class="form-control" type="tel" value="{{data.emp_phone}}" placeholder="Enter phone number" name="phone"
+                                  id="phone">
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">E-Mail</span>
+                              <input class="form-control" type="email" value="{{data.emp_email}}" placeholder="Enter Email" name="email" id="email">
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">Date of Birth</span>
+                              <input class="form-control" type="date" name="dob" value="{{data.emp_dob}}" id="dob">
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">Address</span>
+                              <textarea placeholder="Enter Address" name="address" val class="form-control"
+                                  id="address">{{data.emp_address}}</textarea>
+                          </div>
+                          <div class="row">
+                              <div class="col-sm-5">
+                                  <div class="form-group">
+                                      <span class="form-label">Id Proof</span>
+                                      <select class="form-control" type="date" name="idproof" id="idproof">
+                                          <!-- <option value="" selected disabled>Select</option> -->
+                                          <option value="{{data.emp_idproof}}" selected>{{data.emp_idproof}}</option>
+                                          <option value="Aadhar">Aadhar</option>
+                                          <option value="Driving License">Driving License</option>
+                                          <option value="Pan Card">Pan Card</option>
+                                      </select>
+  
+                                  </div>
+                              </div>
+                              <div class="col-sm-7">
+                                  <div class="row">
+                                      <div class="form-group">
+                                          <span class="form-label">Id Proof Number</span>
+                                          <input class="form-control" value="{{data.emp_idproofnum}}" type="number" name="idproofnumber" id="idproofnum">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">Photo</span>
+                              <input class="form-control" type="file" name="emp_photo" id="photo">
+                          </div>
+                          <div class="form-group">
+                              <span class="form-label">Password</span>
+                              <input class="form-control" type="text"  name="password" id="password">
+                          </div>
+                          <div class="form-btn">
+                              <br>
+                              <button class="btn btn-primary" type="submit">Update Data</button>
+                          </div>
+                          <div class="form-btn">
+                              <br>
+                              <a href="" id="delete_url"><button class="btn btn-danger" type="button">Delete Employee</button></a>
+                          </div>
+                          <br>
+                          <div class="form-btn">
+                              <a href="employee_management"><button class="btn btn-primary" type="button">Back to Home</button></a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
+  
+  
 
 
 
-
-
-    <!-- </body>
+</div>
+<!-- </body>
 
 </html> -->
 

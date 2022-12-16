@@ -21,6 +21,4 @@ function change_emp_password(){
         alert("Password Does Not Match")
         return false
     }
-
-    alert("Password Changed Successfully")
 }

@@ -14,4 +14,10 @@ urlpatterns = [
      path('Service History',views.service_history,name='serviceHistory'),
      path('feedbacks',views.feedbacks,name='feedbacks'),
      path('messages',views.messages,name='messages'),
+     path('edit_employee/<int:id>',views.edit_employee,name='edit_employee'),
+     path('emp_email_check',views.emp_email_check,name='emp_email_check'),
+     path('emp_number_check',views.emp_number_check,name='emp_number_check'),
+     path('edit_employee_data',views.edit_employee_data,name='edit_employee_data'),
+     path('delete_employee_data/<int:id>',views.delete_employee_data,name='delete_employee_data'),
+     path('delete_message/<int:id>',views.delete_message,name='delete_message'),
 ]
