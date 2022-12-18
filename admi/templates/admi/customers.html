@@ -23,7 +23,7 @@
             <td>{{i.phone}}</td>
             <td>{{i.password}}</td>
             <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#edit_cust_Data"
-                onclick="editData('{{i.id}}')">Edit</button></a>&nbsp;</td>
+                onclick="edit_cust_data('{{i.id}}')">Edit</button></a>&nbsp;</td>
         </tr>
 
         {% endfor %}
@@ -69,14 +69,15 @@
       <div class="modal-body">
 
        
-        <form method="post" onsubmit="return signUp()" action="register" >
+        <form method="post" onsubmit="return signUp()" >
 			{% csrf_token %}
 			<h1>Edit User</h1>
-			<input class="form-control" type="text" placeholder="ID" disabled name="name"  id="name"/><br>
-			<input class="form-control" type="text" placeholder="Name" name="name"  id="name"/><br>
-			<input class="form-control" type="email" placeholder="Email" name="email" id="email" onchange="checkEmailExist()"/><span id="emailError" style="color: red;"></span><br>
-			<input class="form-control" type="number" placeholder="Phone" name="phone" id="phone" /><br>
-			<input class="form-control" type="password" placeholder="Password" name="password" id="password" /><br>
+			<input class="form-control" type="hidden" placeholder="ID"  name="id"  id="id"/><br>
+			<input class="form-control" type="text" placeholder="ID" disabled name="cust_id"  id="cust_id"/><br>
+			<input class="form-control" type="text" placeholder="Name" name="name"  id="cust_name"/><br>
+			<input class="form-control" type="email" placeholder="Email" name="email" id="cust_email" onchange="checkEmailExist()"/><span id="emailError" style="color: red;"></span><br>
+			<input class="form-control" type="number" placeholder="Phone" name="phone" id="cust_phone" /><br>
+			<input class="form-control" type="text" placeholder="Password" name="password" id="cust_password" /><br>
 
 
                 </div>

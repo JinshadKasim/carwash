@@ -23,6 +23,9 @@ urlpatterns = [
      path('delete_message/<int:id>',views.delete_message,name='delete_message'),
      path('delete_feedback/<int:id>',views.delete_feedback,name='delete_message'),
      path('edit_data',views.editData,name='edit_data'),
+     path('edit_cust_data',views.edit_cust_data,name='edit_cust_data'),
      path('delete_booking',views.deleteData,name='delete_booking'),
      path('cancel_booking/<int:id>',views.cancel_booking,name='cancel_booking'),
+     path('email_check',views.checkEmail,name='email_check'),
+
 ]

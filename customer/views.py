@@ -171,3 +171,12 @@ def deleteData(request,id=0):
 def cancel_booking(request,id=0):
     Bookings.objects.get(id=id).delete()
     return redirect("status")
+
+
+def cust_profile(request):
+    userObj = Users.objects.get(id=request.session["userId"])
+    if request.method == 'POST':
+        new_password = request.POST['new_password']
+        Users.objects.filter(id=request.session['userId']).update(password=new_password)
+        return redirect('cust_profile')
+    return render(request, 'customer/cust_profile.html',({'user':userObj}))

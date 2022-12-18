@@ -19,6 +19,7 @@ urlpatterns = [
     path('edit_data',views.editData,name='edit_data'),
     path('delete_booking',views.deleteData,name='delete_booking'),
     path('cancel_booking/<int:id>',views.cancel_booking,name='cancel_booking'),
+    path('cust_profile',views.cust_profile,name='cust_profile'),
 
 
 ]

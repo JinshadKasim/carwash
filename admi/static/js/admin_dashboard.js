@@ -116,3 +116,52 @@ function delete_booking(id){
     })    
 
 }
+
+function checkEmailExist(){
+    // console.log("function called")
+    // console.log($('#email').val())
+    $.ajax({
+        url:"email_check",
+        type:"post",
+        data: {
+            'email':$('#cust_email').val()
+        },
+        success:function(response){
+            if(response.message){
+                $('#emailError').html("Email Alredy Exist")
+                $('#submit').prop('disabled',true)
+                
+            }
+            else{
+                $('#emailError').html(" ")
+                $('#submit').prop('disabled',false)
+
+
+            }
+        }
+    })
+}
+
+
+
+function edit_cust_data(id) {
+    $.ajax({
+        url:"edit_cust_data",
+        type:"post",
+        data: {
+            'id': id,
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        },            
+
+        success: function(response) {
+            console.log(response.data)
+            $('#id').val(response.data.id)
+            $('#cust_id').val(response.data.id)
+            $('#cust_name').val(response.data.name)
+            $('#cust_phone').val(response.data.phone)
+            $('#cust_email').val(response.data.email)
+            $('#cust_password').val(response.data.password)
+
+        }
+    })
+}

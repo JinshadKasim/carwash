@@ -178,6 +178,15 @@ def messages(request):
 @admin_login_check
 def customers(request):
     customersObj = Users.objects.all()
+    if request.method == 'POST':
+        cust_id = request.POST['id']
+        name = request.POST['name']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        password = request.POST['password']
+        Users.objects.filter(id=cust_id).update(name=name,phone=phone,email=email,password=password)
+    
+        return redirect('customers')
     return render(request,'admi/customers.html',({'data':customersObj}))
 
 def edit_employee(request,id=0):
@@ -250,8 +259,7 @@ def editData(request,id=0):
     id = request.POST.get('id')
     print(id)
     datas = Bookings.objects.get(id=id)
-    # model_to_dict(data)
-    #print(data.car_name)
+
     data={'id': datas.id,'plan':datas.plan,'phone':datas.phone,'car_name':datas.car_name,'destination':datas.destination,'washing_date':datas.washing_date,'hour':datas.hour,'minute':datas.minute,'ampm':datas.ampm,'message':datas.message,'status':datas.status}
     return JsonResponse({'data': data})
 
@@ -269,3 +277,19 @@ def cancel_booking(request,id=0):
     return redirect("dashboard")
 
 
+@csrf_exempt   
+def checkEmail(request):
+    email = request.POST.get('email')
+    print(email)
+    emailExist = Users.objects.filter(email = email).exists()
+    print(emailExist)
+    return JsonResponse({"message":emailExist})
+
+
+
+def edit_cust_data(request,id=0):
+    id = request.POST.get('id')
+    print(id)
+    datas = Users.objects.get(id=id)
+    data={'id': datas.id,'name':datas.name,'phone':datas.phone,'email':datas.email,'password':datas.password}
+    return JsonResponse({'data': data})
