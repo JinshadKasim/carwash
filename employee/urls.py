@@ -14,6 +14,13 @@ urlpatterns = [
      path('Service History',views.emp_service_history,name='emp_serviceHistory'),
      path('feedbacks',views.emp_feedbacks,name='emp_feedbacks'),
      path('messages',views.emp_messages,name='emp_messages'),
+     path('customers',views.emp_customers,name='customers'),
      path('change_password',views.emp_change_password,name='emp_change_password'),
      path('emp_profile',views.emp_profile,name='emp_profile'),
+     path('edit_data',views.editData,name='edit_data'),
+     path('delete_message/<int:id>',views.emp_delete_message,name='delete_message'),
+     path('delete_feedback/<int:id>',views.emp_delete_feedback,name='delete_message'),
+     path('delete_booking',views.deleteData,name='delete_booking'),
+     path('cancel_booking/<int:id>',views.cancel_booking,name='cancel_booking'),
+
 ]

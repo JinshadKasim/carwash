@@ -1,0 +1,36 @@
+{% extends 'employee/dashboard.html' %}
+{% block content %}
+<h2 class="empHeading">Customers</h2>
+
+
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Password</th>
+        </tr>
+        {% for i in data %}
+        {% csrf_token %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.password}}</td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+</table>
+
+<div class="bbbt"><a href="{% url 'employee_register' %}">
+        <a href="{% url 'emp_dashboard' %}"> <button type="button" class="btn btn-primary">Back to Home</button></a>
+</div>
+
+
+{% endblock %}

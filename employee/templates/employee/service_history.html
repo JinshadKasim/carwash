@@ -27,7 +27,8 @@
         <td>{{i.destination}}</td>
         <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
         <td>{{i.status}}</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+        <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#editData"
+          onclick="editData('{{i.id}}')">Edit</button></td>
       </tr>
       {% endfor %}
       </table>

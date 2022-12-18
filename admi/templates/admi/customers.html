@@ -1,0 +1,100 @@
+{% extends 'admi/dashboard.html' %}
+{% block content %}
+<h2 class="empHeading">Customers</h2>
+
+
+<br><br><br>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Password</th>
+            <th scope="col">Action</th>
+        </tr>
+        {% for i in data %}
+        {% csrf_token %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.password}}</td>
+            <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#edit_cust_Data"
+                onclick="editData('{{i.id}}')">Edit</button></a>&nbsp;</td>
+        </tr>
+
+        {% endfor %}
+
+        </tbody>
+</table>
+
+<div class="bbbt"><a href="{% url 'employee_register' %}">
+        <a href="{% url 'dashboard' %}"> <button type="button" class="btn btn-primary">Back to Home</button></a>
+</div>
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="cust_staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cancel Booking</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you Sure You Want to Cancel your Booking?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <a href="" id="cancel_booking_btn"> <button type="button" class="btn btn-danger">Yes</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="edit_cust_Data" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Edit Booking</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+       
+        <form method="post" onsubmit="return signUp()" action="register" >
+			{% csrf_token %}
+			<h1>Edit User</h1>
+			<input class="form-control" type="text" placeholder="ID" disabled name="name"  id="name"/><br>
+			<input class="form-control" type="text" placeholder="Name" name="name"  id="name"/><br>
+			<input class="form-control" type="email" placeholder="Email" name="email" id="email" onchange="checkEmailExist()"/><span id="emailError" style="color: red;"></span><br>
+			<input class="form-control" type="number" placeholder="Phone" name="phone" id="phone" /><br>
+			<input class="form-control" type="password" placeholder="Password" name="password" id="password" /><br>
+
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

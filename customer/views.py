@@ -50,7 +50,8 @@ def booking(request):
 @login_check
 def status(request):
     user = Users.objects.get(id=request.session['userId'])
-    user_bookings = Bookings.objects.filter(user_id=request.session['userId'])
+    user_bookings = Bookings.objects.filter(user_id=request.session['userId'],status="Pending")
+    user_cbookings = Bookings.objects.filter(user_id=request.session['userId'],status="Completed")
     print(user_bookings)
     if request.method == 'POST':
         e_id = request.POST['id']
@@ -66,7 +67,12 @@ def status(request):
 
     
         return redirect('status')
-    return render(request,'customer/status.html',{'bookings':user_bookings,'user':user})
+    context = {
+        'bookings':user_bookings,
+        'cbookings':user_cbookings,
+        'user':user
+    }
+    return render(request,'customer/status.html',context)
 @logout_check    
 def login(request):
 

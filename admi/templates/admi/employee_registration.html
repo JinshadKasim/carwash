@@ -50,7 +50,7 @@
             <div class="row">
                 <div class="booking-form">
 
-                    <form method="post" onsubmit="return register_employee()">
+                    <form method="post" enctype="multipart/form-data" onsubmit="return register_employee()">
                         {% csrf_token %}
                         <!-- <div class="row">
                             <div class="col-sm-6">
@@ -76,7 +76,7 @@
                         <div class="form-group">
                             <span class="form-label">Phone</span>
                             <input class="form-control" type="tel" placeholder="Enter phone number" name="phone"
-                                id="phone" onchange="emp_checkNumberExist()">
+                                id="phone" onchange="emp_checkNumberExist()" >
                             <span id="emp_numberError" style="color: red;"></span>
 
                         </div>

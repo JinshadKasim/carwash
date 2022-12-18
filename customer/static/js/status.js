@@ -12,6 +12,7 @@ function editData(id) {
             $('#id').val(response.data.id)
             $('#e_id').val(response.data.id)
             $('#plan').val(response.data.plan)
+            $('#phone').val(response.data.phone)
             $('#car_name').val(response.data.car_name)
             $('#destination').val(response.data.destination)
             $('#washing_date').val(response.data.washing_date)

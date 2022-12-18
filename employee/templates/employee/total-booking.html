@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th scope="col">Booking Id</th>
+        <th scope="col">Customer Id</th>
         <th scope="col">Plan</th>
         <th scope="col">Carname</th>
         <th scope="col">Date</th>
@@ -21,13 +22,16 @@
     {% for i in data %}
       <tr>
         <th scope="row">{{i.id}}</th>
+        <th>{{i.user_id}}</th>
         <td>{{i.plan}}</td>
         <td>{{i.car_name}}</td>
         <td>{{i.washing_date}}</td>
         <td>{{i.destination}}</td>
         <td>{{i.hour}}:{{i.minute}} {{i.ampm}}</td>
         <td>{{i.status}}</td>
-        <td><button type="button" class="btn btn-secondary btnsz">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+        <td><button type="button" class="btn btn-secondary btnsz" data-bs-toggle="modal" data-bs-target="#editData"
+          onclick="editData('{{i.id}}')">Edit</button>&nbsp;<button type="BUtton" class="btn btn-danger btn-sm btnsz cb" data-bs-toggle="modal"
+          data-bs-target="#staticBackdrop" onclick="delete_booking('{{i.id}}')">Cancel Booking</span></button></td>
       </tr>
       {% endfor %}
       </table>

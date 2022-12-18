@@ -1,7 +1,7 @@
 {% extends 'admi/dashboard.html' %}
 {% block content %}
 
-<h3 class="bookingHeading">Comleted Booking</h3>
+<h3 class="bookingHeading">Feedbacks</h3>
 
 <br><br><br>
 <table class="table table-striped">
@@ -19,7 +19,7 @@
         <th scope="row">{{i.id}}</th>
         <td>{{i.feedback}}</td>
         <td>{{i.current_date}}</td>
-        <td><button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Cancel Booking</span></button></td>
+        <td><a href="delete_feedback/{{i.id}}"><button type="BUtton" class="btn btn-danger btn-sm btnsz cb"><span class="cbk">Delete</span></button></a></td>
       </tr>
       {% endfor %}
       </table>
